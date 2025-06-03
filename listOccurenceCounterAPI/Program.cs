@@ -1,13 +1,15 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+builder.WebHost.UseUrls($"http://*:{port}");
+
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -15,13 +17,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
-
 app.MapControllers();
-
-// Get the port from environment variable or default to 5000
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-
-// Tell the app to listen on that port on all network interfaces
-app.Urls.Add($"http://*:{port}");
-
 app.Run();
