@@ -69,7 +69,7 @@ All endpoints are `POST` requests that accept a JSON array.
 
 ## Hosting
 The live API is hosted on Render and is available here:
-TBD
+https://listoccurencecounterapi.onrender.com/api/[counter/strings|ints|chars]]
 
 ## Project Structure
 ``` 
