@@ -8,8 +8,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 
-# Copy csproj and restore as distinct layers
-COPY ["listOccurrenceCounterAPI.csproj", "./"]
+# Copy csproj and restore as distinct layers (adjusted path)
+COPY ["listOccurenceCounterAPI/listOccurrenceCounterAPI.csproj", "./"]
 RUN dotnet restore "./listOccurrenceCounterAPI.csproj"
 
 # Copy everything else and build
