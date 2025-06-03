@@ -1,0 +1,6 @@
+@listOccurenceCounterAPI_HostAddress = http://localhost:5240
+
+GET {{listOccurenceCounterAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
