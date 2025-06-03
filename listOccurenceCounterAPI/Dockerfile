@@ -15,4 +15,4 @@ COPY --from=build /app/out ./
 
 EXPOSE 10000
 
-ENTRYPOINT ["dotnet", "YourProjectName.dll"]
+ENTRYPOINT ["dotnet", "listOccurrenceCounterAPI.dll"]
