@@ -3,16 +3,17 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 
 # Copy csproj and restore as distinct layers
-COPY ["listOccurrenceCounterAPI/listOccurrenceCounterAPI.csproj", "./"]
+COPY ["listOccurenceCounterAPI/listOccurrenceCounterAPI.csproj", "./"]
 RUN dotnet restore "./listOccurrenceCounterAPI.csproj"
 
 # Copy everything else and build
-COPY ./listOccurrenceCounterAPI ./listOccurrenceCounterAPI
-WORKDIR "/src"
+COPY ./listOccurenceCounterAPI ./listOccurenceCounterAPI
+WORKDIR "/src/listOccurenceCounterAPI"
 RUN dotnet build "listOccurrenceCounterAPI.csproj" -c Release -o /app/build
 
 # Publish the app
 FROM build AS publish
+WORKDIR "/src/listOccurenceCounterAPI"
 RUN dotnet publish "listOccurrenceCounterAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Final runtime image
